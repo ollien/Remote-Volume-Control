@@ -8,18 +8,21 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="@string/vUp"
+        android:onClick="volumeUpClick"
         />
     <Button
         android:id="@+id/mute"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="@string/mute"
+        android:onClick="muteClick"
         />
     <Button
         android:id="@+id/volumeDown"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:text="@string/vDown"
+        android:onClick="volumeDownClick"
         />
 
 </LinearLayout>

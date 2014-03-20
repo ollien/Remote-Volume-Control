@@ -11,16 +11,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.os.Build;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
     Button volumeUp;
     Button volumeDown;
     Button muteButton;
+    VolumeTransmit vt;
+    String ip = "192.168.1.55";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+        muteButton = (Button)findViewById(R.id.mute);
+        volumeUp = (Button)findViewById(R.id.volumeUp);
+        volumeDown = (Button)findViewById(R.id.volumeDown);
+        vt = new VolumeTransmit();
+        vt.execute(ip,"5565");
+        Toast.makeText(this, "Should have connected, check logs", Toast.LENGTH_LONG).show();
     }
 
 
@@ -44,4 +52,13 @@ public class MainActivity extends ActionBarActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void volumeUpClick(View v){
+        vt.send("up");
+    }
+    public void volumeDownClick(View v){
+        vt.send("down");
+    }
+    public void muteClick(View v){
+        vt.send("mute");
+    }
 }
